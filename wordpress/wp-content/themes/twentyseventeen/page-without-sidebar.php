@@ -32,7 +32,7 @@ if(!empty($_POST['save-data']))
 $person_list=$wpdb->get_results($wpdb->prepare("SELECT * FROM persons",ARRAY_A));
 ?>
 
-<div id="sign-form" style="width: 50%;margin-left: 100px;margin-bottom: 20px;margin-top: 0px !important;">
+<div id="sign-form" style="width: 50%;margin-left: 165px;margin-bottom: 20px;margin-top: 0px !important;">
     <form method="post" action="">
         <label>First Name</label><input type="text" name="firstname" id="firstname" value="">
         <label>Last Name</label><input type="text" name="lastname" id="lastname" value="">
@@ -42,7 +42,7 @@ $person_list=$wpdb->get_results($wpdb->prepare("SELECT * FROM persons",ARRAY_A))
     </form>
 </div>
 
-<div id="person_list" style="width: 90%;margin-left: 100px;">
+<div id="person_list" style="width: 80%;margin-left: 165px;">
     <table style="border: 1px solid darkblue;" border="1px solid black">
         <thead>
         <th>Id</th>
