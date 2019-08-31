@@ -1,0 +1,31 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+
+.breadcrumb {
+  font-size: 14px;
+  font-family: @font-family-sans-serif;
+  padding: 8px 0;
+  // margin-bottom: @line-height-computed;
+  margin-bottom: 0;
+  list-style: none;
+  font-weight: 300;
+
+  > span > span {
+    padding: 0 5px;
+  }
+  // background-color: @breadcrumb-bg;
+  // border-radius: @border-radius-base;
+  // > span {
+  //   display: inline-block;
+  //   &+li:before {
+  //     content: "/\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+  //     padding: 0 5px;
+  //     color: @breadcrumb-color;
+  //   }
+  // }
+  .breadcrumb_last {
+    color: @breadcrumb-active-color;
+  }
+}

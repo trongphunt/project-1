@@ -1,0 +1,405 @@
+/*
+Theme Name: Test theme
+Author: Trong Phu
+*/
+
+#primary{
+    width: 60%;
+    float: left;
+}
+
+#sidebar{
+    width: 40%;
+    float: right;
+}
+
+
+#header-top {
+    background: #265FAB;
+    padding: 5px;
+}
+
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+#header-top .maps {
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+}
+@media (min-width: 576px)
+#header-top .email-contact {
+    font-size: 16px;
+    color: #fff;
+    clear: both;
+}
+#header-top .email-contact {
+    font-size: 16px;
+    color: #fff;
+    float: right;
+}
+#header-top .hotline-top {
+    font-size: 16px;
+    color: #fff;
+    float: right;
+}
+
+
+ul#customMenubs a.active {
+    border: none;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+#customMenubs li a {
+    text-transform: uppercase;
+    color: #333;
+    font-weight: 500;
+    margin-right: 18px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+li.dropdown-submenu a {
+    text-transform: none !important;
+}
+
+li.dropdown-submenu a {
+    display: inline-block !important;
+    padding-right: 25px !important;
+}
+
+li.dropdown-submenu i {
+    position: absolute;
+    right: 5px;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 30px;
+}
+
+.dropdown:hover>ul {
+    display: block;
+}
+
+.dropdown a:hover {
+    text-decoration: none;
+    border-bottom-color: #FDB813;
+}
+
+.dropdown .dropdown-submenu a:hover {
+    background-color: #fecf5f;
+    width: 100%;
+}
+
+.dropdown-menu {
+    border-radius: 0px;
+    border: none;
+}
+
+@media (max-width: 1200px) {
+    ul.dropdown-menu ul.dropdown-menu {
+        padding-left: 20px;
+        border: none;
+    }
+    ul.dropdown-menu ul.dropdown-menu a {
+        font-weight: normal !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .dropdown-submenu:hover>ul {
+        display: block;
+    }
+    li.dropdown-submenu i {
+        display: none;
+    }
+}
+
+.float-icon {
+    display: block;
+    width: 40px;
+    position: fixed;
+    bottom: 50%;
+    right: 20px;
+    z-index: 999999;
+}
+
+.float-icon ul {
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.float-icon ul li {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 39px;
+}
+
+.float-icon ul li i {
+    display: block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #ff6a00;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    border: 2px solid #ffffff;
+}
+
+.float-icon ul li span {
+    display: inline-block;
+    padding: 0 0px;
+    background-color: #ff6a00;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    height: 40px;
+    line-height: 36px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 0;
+    width: 0;
+    overflow: hidden;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    background-color: #ff6a00;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+}
+
+.float-icon ul li:hover span {
+    width: 200px;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.float-icon ul li i {
+    background-color: #6bbaeb;
+}
+
+.float-icon ul li span {
+    background-color: #6bbaeb;
+    white-space: nowrap;
+}
+
+.float-icon ul li:nth-of-type(1) i {
+    background-color: #ed1c24;
+}
+
+.float-icon ul li:nth-of-type(1) span {
+    background-color: #ed1c24;
+}
+
+.float-icon ul li:nth-of-type(2) i {
+    background-color: #3b5998;
+}
+
+.float-icon ul li:nth-of-type(2) span {
+    background-color: #3b5998;
+}
+
+.float-icon ul li:nth-of-type(3) i {
+    background-color: #399fd0;
+}
+
+.float-icon ul li:nth-of-type(3) span {
+    background-color: #399fd0;
+}
+
+.float-icon ul li:nth-of-type(4) i {
+    background-color: #ffc50f;
+}
+
+.float-icon ul li:nth-of-type(4) span {
+    background-color: #ffc50f;
+}
+
+.float-icon-mobile {
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 111;
+}
+
+.float-icon-mobile ul {
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    padding-left: 0px;
+}
+
+.float-icon-mobile ul::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    clear: both;
+}
+
+.float-icon-mobile ul li.content_product_daily {
+    margin-bottom: 0;
+}
+
+.float-icon-mobile ul li {
+    display: block;
+    width: 100px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ff6a00;
+    border-radius: 20px;
+}
+
+.float-icon-mobile ul li a {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+}
+
+.float-icon-mobile ul li.bg_color_1 {
+    -webkit-animation: bg_color_1 2s infinite;
+    animation: bg_color_1 2s infinite;
+}
+
+.float-icon-mobile ul li.bg_color_2 {
+    -webkit-animation: bg_color_2 2s infinite;
+    animation: bg_color_2 2s infinite;
+}
+
+.float-icon-mobile ul li i {
+    margin-right: 5px;
+}
+
+@-webkit-keyframes bg_color_1 {
+    0% {
+        background-color: #ed1c24;
+    }
+    50% {
+        background-color: #37b272;
+    }
+    100% {
+        background-color: #ed1c24;
+    }
+}
+
+@keyframes bg_color_1 {
+    0% {
+        background-color: #ed1c24;
+    }
+    50% {
+        background-color: #37b272;
+    }
+    100% {
+        background-color: #ed1c24;
+    }
+}
+
+@-webkit-keyframes bg_color_2 {
+    0% {
+        background-color: #37b272;
+    }
+    50% {
+        background-color: #ed1c24;
+    }
+    100% {
+        background-color: #37b272;
+    }
+}
+
+@keyframes bg_color_2 {
+    0% {
+        background-color: #37b272;
+    }
+    50% {
+        background-color: #ed1c24;
+    }
+    100% {
+        background-color: #37b272;
+    }
+}
+
+
+/*@media (max-width: 800px) {
+    .float-icon {
+        display: none;
+    }
+    .float-icon-mobile {
+        display: block;
+    }
+}*/
+
+.hotline_popup {
+    display: none;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.hotline_popup h5 {
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6a00;
+}
+
+.hotline_popup a {
+    color: #ff0000;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.hotline_popup a span {
+    font-weight: normal;
+}
+
+.hotline_popup a:hove,
+.hotline_popup a:active {
+    outline: none;
+}
+
+.fa-wpforms:before {
+    content: "Zalo";
+    font-family: arial;
+    font-size: 14px;
+}

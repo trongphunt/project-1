@@ -1,0 +1,211 @@
+.page-child .navbar-nav-therapists li:first-child a {
+  color: #333 !important;
+}
+
+.ft {
+
+  .snap-content {
+    top: 25px;
+  }
+
+  &.page-child {
+    #masthead {
+      border-bottom: 4px solid @blue-dark;
+      margin-bottom: 42px;
+    }
+  }
+
+  .gradientbar {
+    background-image: url("@{img}/bg-ft_gradientbar.jpg");
+  }
+  
+  .hero-overlay {
+    display: none;
+  }
+
+  .box-content {
+    padding-bottom: 0;
+  }
+
+  .hero {
+    background-image: url("@{img}/for-therapists/bg-hero.jpg");
+    color: #fff;
+    font-family: @font-family-sans-serif;
+    h1 {
+      font-size: (@font-size-base * 2.777777778);
+      font-weight: 600;
+    }
+    .btn {
+      margin-top: 26px;
+    }
+  }
+
+  #footer {
+    background-color: @blue-dark;
+    a {
+      color: #fff;
+      &:hover {
+        color: darken(white, 15%);
+      }
+    }
+    .logo {
+      background-image: url("@{img}/logo-white.png");
+      background-image: url("@{img}/logo-white.svgz");
+    }
+    .section-icon {
+      background-color: @blue-dark;
+    }
+    + .gradientbar { display: none; }
+    .icn-twitter { 
+      background-image: url("@{img}/icn_white-twitter.png"); 
+    }
+    .icn-facebook {
+      background-image: url("@{img}/icn_white-facebook.png"); 
+    }
+    .icn-google {
+      background-image: url("@{img}/icn_white-google_plus.png"); 
+    }
+    .icn-blog {
+      background-image: url("@{img}/icn_white-blog.png"); 
+    }
+    .innercourage {
+      background-image: url("@{img}/icn_white-innercourage.png"); 
+    }
+  }
+
+  #credibility-findability {
+    position: relative;
+    p{
+      font-size: 75%;
+    }
+  }
+
+  #eligibility {
+    .box > div {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  #ft-testimonial {
+    border-left: 0;
+    p {
+      color: @blue-dark;
+    }
+    small {
+      padding-left: 40px;
+      color: #5e5c4d;
+      text-transform: uppercase;
+      font-size: 12px;
+      background: url("@{img}/icn-quotes-green.png") no-repeat 0 50%;
+      span {
+        text-transform: none;
+        display: block;
+      }
+    }
+  }
+
+  .emdr-search-form {
+    background: @blue-dark;
+    h1 {
+      color: #fff;
+    }
+  }
+
+  #main article h2 {
+    color: @blue-dark;
+  }
+
+} // .ft
+
+.navbar-nav-therapists {
+  top: 50%;
+  right: 98px;
+  margin-top: -17px;
+
+  // li:hover, 
+  li.active {
+    a, a:hover{ 
+      color: @green;
+
+    }
+  }
+}
+
+.ft #masthead {
+  .join-now {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -17px;
+  }
+}
+
+#emdrtn-back {
+  height: 30px;
+  line-height: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 600px;
+  z-index: 99999;
+  padding: 2px 20px 0;
+  background-color: #464646;
+  background-image: -ms-linear-gradient(bottom, #373737, #464646 5px);
+  background-image: -moz-linear-gradient(bottom, #373737, #464646 5px);
+  background-image: -o-linear-gradient(bottom, #373737, #464646 5px);
+  background-image: -webkit-gradient(linear,left bottom,left top,from( #373737),to(#464646));
+  background-image: -webkit-linear-gradient(bottom, #373737, #464646 5px);
+  background-image: linear-gradient(bottom, #373737, #464646 5px);
+  text-align: left;
+  a {
+    color: #DDD;
+    font: normal 13px/28px @font-family-sans-serif;
+  }
+}
+
+@media screen and (min-width: ceil(@screen-desktop - 1) ) {
+  #credibility-findability {
+    .gfx {
+      position: absolute;
+      bottom: 0;
+      width: 48%;
+      left: -8%;
+    }
+  }
+  .ft {
+    .navbar-brand {
+      margin-top: 22px;
+    }
+    #masthead {
+      .container {
+        height: 136px;
+      }
+    }
+  }
+}
+
+// tablet
+@media screen 
+and (min-width: @screen-tablet) 
+and (max-width: @screen-desktop ) {
+
+  #masthead > .container {
+    height: 160px;
+  }
+
+  .ft .navbar-brand {
+    float: none;
+    margin: 14px auto !important;
+    top: auto !important;
+    width: 186px;
+  }
+
+  .navbar-nav-therapists,
+  #masthead .join-now {
+    bottom: 18px;
+    top: auto !important;
+  }
+  
+}

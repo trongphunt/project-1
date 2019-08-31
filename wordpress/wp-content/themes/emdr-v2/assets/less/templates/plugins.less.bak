@@ -1,0 +1,885 @@
+@font-face {
+  font-family: 'twitter-tweets';
+  src: url("/wp-content/plugins/twitter-tweets/assets/icons/twitter-tweets-2.eot");
+  src: url("/wp-content/plugins/twitter-tweets/assets/icons/twitter-tweets-2.eot?#iefix") format("embedded-opentype"),url("/wp-content/plugins/twitter-tweets/assets/icons/twitter-tweets-2.svg#twitter-tweets") format("svg"),url("/wp-content/plugins/twitter-tweets/assets/icons/twitter-tweets-2.woff") format("woff"),url("/wp-content/plugins/twitter-tweets/assets/icons/twitter-tweets-2.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.twitter-tweets-reply:before,.twitter-tweets-retweet:before,.twitter-tweets-star:before,.twitter-tweets-heart:before,.twitter-tweets-twitter:before,.twitter-tweets-bird:before,.twitter-tweets-bird-2:before,.twitter-tweets-bird-3:before,.twitter-tweets-hamster:before,.twitter-tweets-fox:before,.twitter-tweets-cat:before,.twitter-tweets-cat-2:before,.twitter-tweets-cat-3:before,.twitter-tweets-cat-4:before,.twitter-tweets-water:before,.twitter-tweets-robot:before,.twitter-tweets-fish:before,.twitter-tweets-dot:before,.twitter-tweets-cactus:before,.twitter-tweets-octopus:before,.twitter-tweets-ghost:before,.twitter-tweets-ghost-2:before,.twitter-tweets-ghost-3:before,.twitter-tweets-ghost-4:before,.twitter-tweets-rabbit:before,.twitter-tweets-rabbit-2:before,.twitter-tweets-moon:before,.twitter-tweets-bear:before,.twitter-tweets-bear-2:before,.twitter-tweets-bear-3:before,.twitter-tweets-bear-4:before,.twitter-tweets-snowman:before,.twitter-tweets-cloud:before,.twitter-tweets-toast:before,.twitter-tweets-phone:before,.twitter-tweets-ant:before,.twitter-tweets-frog:before,.twitter-tweets-duckling:before,.twitter-tweets-duck:before,.twitter-tweets-skull:before,.twitter-tweets-skull-2:before,.twitter-tweets-skull-3:before,.twitter-tweets-skull-4:before,.twitter-tweets-skull-5:before,.twitter-tweets-pacman:before,.twitter-tweets-pumpkin:before,.twitter-tweets-pumpkin-2:before,.twitter-tweets-wizard:before,.twitter-tweets-gnome:before,.twitter-tweets-imp-2:before,.twitter-tweets-imp:before,.twitter-tweets-imp-4:before,.twitter-tweets-imp-3:before,.twitter-tweets-lizard:before,.twitter-tweets-slime:before,.twitter-tweets-death:before,.twitter-tweets-gimp:before,.twitter-tweets-gimp-2:before,.twitter-tweets-dog:before,.twitter-tweets-bat:before,.twitter-tweets-bat-2:before,.twitter-tweets-crow:before,.twitter-tweets-bee:before,.twitter-tweets-spider:before,.twitter-tweets-house:before,.twitter-tweets-snake:before {
+  font-family: 'twitter-tweets';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.twitter-tweets-reply:before {
+  content: "\e000";
+}
+
+.twitter-tweets-retweet:before {
+  content: "\e001";
+}
+
+.twitter-tweets-star:before {
+  content: "\e002";
+}
+
+.twitter-tweets-heart:before {
+  content: "\74";
+}
+
+.twitter-tweets-twitter:before {
+  content: "\73";
+}
+
+.twitter-tweets-bird:before {
+  content: "\f004";
+}
+
+.twitter-tweets-bird-2:before {
+  content: "\f005";
+}
+
+.twitter-tweets-bird-3:before {
+  content: "\f064";
+}
+
+.twitter-tweets-hamster:before {
+  content: "\f079";
+}
+
+.twitter-tweets-fox:before {
+  content: "\56";
+}
+
+.twitter-tweets-cat:before {
+  content: "\27";
+}
+
+.twitter-tweets-cat-2:before {
+  content: "\2a";
+}
+
+.twitter-tweets-cat-3:before {
+  content: "\2b";
+}
+
+.twitter-tweets-cat-4:before {
+  content: "\3d";
+}
+
+.twitter-tweets-water:before {
+  content: "\40";
+}
+
+.twitter-tweets-robot:before {
+  content: "\41";
+}
+
+.twitter-tweets-fish:before {
+  content: "\44";
+}
+
+.twitter-tweets-dot:before {
+  content: "\45";
+}
+
+.twitter-tweets-cactus:before {
+  content: "\46";
+}
+
+.twitter-tweets-octopus:before {
+  content: "\4f";
+}
+
+.twitter-tweets-ghost:before {
+  content: "\50";
+}
+
+.twitter-tweets-ghost-2:before {
+  content: "\54";
+}
+
+.twitter-tweets-ghost-3:before {
+  content: "\55";
+}
+
+.twitter-tweets-ghost-4:before {
+  content: "\58";
+}
+
+.twitter-tweets-rabbit:before {
+  content: "\59";
+}
+
+.twitter-tweets-rabbit-2:before {
+  content: "\5a";
+}
+
+.twitter-tweets-moon:before {
+  content: "\5e";
+}
+
+.twitter-tweets-bear:before {
+  content: "\5f";
+}
+
+.twitter-tweets-bear-2:before {
+  content: "\6d";
+}
+
+.twitter-tweets-bear-3:before {
+  content: "\70";
+}
+
+.twitter-tweets-bear-4:before {
+  content: "\71";
+}
+
+.twitter-tweets-snowman:before {
+  content: "\21";
+}
+
+.twitter-tweets-cloud:before {
+  content: "\64";
+}
+
+.twitter-tweets-toast:before {
+  content: "\62";
+}
+
+.twitter-tweets-phone:before {
+  content: "\61";
+}
+
+.twitter-tweets-ant:before {
+  content: "\5d";
+}
+
+.twitter-tweets-frog:before {
+  content: "\22";
+}
+
+.twitter-tweets-duckling:before {
+  content: "\23";
+}
+
+.twitter-tweets-duck:before {
+  content: "\51";
+}
+
+.twitter-tweets-skull:before {
+  content: "\4e";
+}
+
+.twitter-tweets-skull-2:before {
+  content: "\4c";
+}
+
+.twitter-tweets-skull-3:before {
+  content: "\4a";
+}
+
+.twitter-tweets-skull-4:before {
+  content: "\49";
+}
+
+.twitter-tweets-skull-5:before {
+  content: "\42";
+}
+
+.twitter-tweets-pacman:before {
+  content: "\3c";
+}
+
+.twitter-tweets-pumpkin:before {
+  content: "\3b";
+}
+
+.twitter-tweets-pumpkin-2:before {
+  content: "\78";
+}
+
+.twitter-tweets-wizard:before {
+  content: "\69";
+}
+
+.twitter-tweets-gnome:before {
+  content: "\6a";
+}
+
+.twitter-tweets-imp-2:before {
+  content: "\6b";
+}
+
+.twitter-tweets-imp:before {
+  content: "\6c";
+}
+
+.twitter-tweets-imp-4:before {
+  content: "\6e";
+}
+
+.twitter-tweets-imp-3:before {
+  content: "\6f";
+}
+
+.twitter-tweets-lizard:before {
+  content: "\24";
+}
+
+.twitter-tweets-slime:before {
+  content: "\25";
+}
+
+.twitter-tweets-death:before {
+  content: "\72";
+}
+
+.twitter-tweets-gimp:before {
+  content: "\26";
+}
+
+.twitter-tweets-gimp-2:before {
+  content: "\77";
+}
+
+.twitter-tweets-dog:before {
+  content: "\28";
+}
+
+.twitter-tweets-bat:before {
+  content: "\79";
+}
+
+.twitter-tweets-bat-2:before {
+  content: "\7a";
+}
+
+.twitter-tweets-crow:before {
+  content: "\7e";
+}
+
+.twitter-tweets-bee:before {
+  content: "\a5";
+}
+
+.twitter-tweets-spider:before {
+  content: "\2012";
+}
+
+.twitter-tweets-house:before {
+  content: "\e003";
+}
+
+.twitter-tweets-snake:before {
+  content: "\3a";
+}
+
+div.twitter-tweets-tweet {
+  display: block !important;
+  position: relative !important;
+  padding: 0 0 30px !important;
+  line-height: 1.84615 !important;
+}
+
+img.twitter-tweet-avatar {
+  position: absolute !important;
+  top: 11px !important;
+  left: 11px !important;
+  height: 48px !important;
+  width: 48px !important;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  -ms-border-radius: 3px !important;
+  -o-border-radius: 3px !important;
+  border-radius: 3px !important;
+}
+
+.twitter-tweets-template-3 img.twitter-tweet-avatar {
+  height: 32px !important;
+  width: 32px !important;
+}
+
+.twitter-tweets-template-3 div.twitter-tweets-meta {
+  margin-left: 40px !important;
+  min-height: 37px !important;
+  line-height: 1.4 !important;
+}
+
+.twitter-tweets-template-4 div.twitter-tweets-meta {
+  margin-left: 56px !important;
+  min-height: 53px !important;
+  line-height: 1.4 !important;
+}
+
+a.twitter-tweets-name {
+  font-weight: bold !important;
+}
+
+a.twitter-tweets-name,a.twitter-tweets-screen-name {
+  text-decoration: none !important;
+}
+
+.twitter-tweets-template-3 a.twitter-tweets-name,.twitter-tweets-template-4 a.twitter-tweets-name {
+  float: left !important;
+}
+
+.twitter-tweets-template-3 a.twitter-tweets-screen-name,.twitter-tweets-template-4 a.twitter-tweets-screen-name {
+  float: left !important;
+  clear: both !important;
+}
+
+div.twitter-tweets-tweet-text {
+  padding: 8px 12px !important;
+  border: solid 1px #d6d6d6;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  -ms-border-radius: 4px !important;
+  -o-border-radius: 4px !important;
+  border-radius: 4px !important;
+  -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.1) !important;
+  -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.1) !important;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.1) !important;
+  z-index: 1 !important;
+  position: relative !important;
+  line-height: 1.84615 !important;
+}
+
+div.twitter-tweets-tweet-text:before {
+  z-index: 0 !important;
+  position: absolute !important;
+  bottom: -13px !important;
+  right: 33px !important;
+  content: "" !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-style: solid !important;
+  border-color: transparent transparent transparent transparent;
+  border-width: 0 13px 13px 0 !important;
+  -webkit-transform: rotate(360deg) !important;
+  -moz-transform: rotate(360deg) !important;
+  -ms-transform: rotate(360deg) !important;
+  -o-transform: rotate(360deg) !important;
+  transform: rotate(360deg) !important;
+  -moz-transform: scale(1.1) !important;
+}
+
+div.twitter-tweets-tweet-text:after {
+  z-index: 2 !important;
+  position: absolute !important;
+  bottom: -10px;
+  right: 34px;
+  content: "" !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-style: solid !important;
+  border-color: transparent transparent transparent transparent;
+  border-width: 0 11px 11px 0 !important;
+  -webkit-transform: rotate(360deg) !important;
+  -moz-transform: rotate(360deg) !important;
+  -ms-transform: rotate(360deg) !important;
+  -o-transform: rotate(360deg) !important;
+  transform: rotate(360deg) !important;
+  -moz-transform: scale(1.1) !important;
+}
+
+div.twitter-tweets-tweet-message {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  clear: both !important;
+}
+
+a.twitter-tweets-tweet-time {
+  display: inline-block !important;
+  text-decoration: none !important;
+  line-height: 1.84615 !important;
+}
+
+div.twitter-tweets-actions {
+  z-index: 0 !important;
+  position: absolute !important;
+  bottom: 4px !important;
+  left: 8px !important;
+  font-size: 15px !important;
+}
+
+div.twitter-tweets-actions a {
+  padding: 0 2px !important;
+  text-decoration: none !important;
+  line-height: 1.84615 !important;
+}
+
+div.twitter-tweets-actions strong {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+.twitter-tweets-hover div.twitter-tweets-actions-slide {
+  -webkit-transform: translate(0, -20px);
+  -moz-transform: translate(0, -20px);
+  -ms-transform: translate(0, -20px);
+  -o-transform: translate(0, -20px);
+  transform: translate(0, -20px);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.twitter-tweets-hover div.twitter-tweets-tweet:hover div.twitter-tweets-actions-slide {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.twitter-tweets-hover div.twitter-tweets-actions-fade {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.twitter-tweets-hover div.twitter-tweets-tweet:hover div.twitter-tweets-actions-fade {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.twitter-tweets-hover div.twitter-tweets-actions-spin a {
+  display: inline-block !important;
+  -webkit-transform: scale(0) rotate(0deg);
+  -moz-transform: scale(0) rotate(0deg);
+  -ms-transform: scale(0) rotate(0deg);
+  -o-transform: scale(0) rotate(0deg);
+  transform: scale(0) rotate(0deg);
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.twitter-tweets-hover div.twitter-tweets-tweet:hover div.twitter-tweets-actions-spin a {
+  -webkit-transform: scale(1) rotate(360deg);
+  -moz-transform: scale(1) rotate(360deg);
+  -ms-transform: scale(1) rotate(360deg);
+  -o-transform: scale(1) rotate(360deg);
+  transform: scale(1) rotate(360deg);
+}
+
+.twitter-tweets-hover div.twitter-tweets-actions-pop a {
+  display: inline-block !important;
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.twitter-tweets-hover div.twitter-tweets-tweet:hover div.twitter-tweets-actions-pop a {
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+a.twitter-tweets-tweet-bird {
+  margin-right: 5px !important;
+  width: 23px !important;
+  height: 26px !important;
+  float: right !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+a.twitter-tweets-tweet-bird:focus {
+  outline: none !important;
+}
+
+span.twitter-tweets-tweet-bird-normal,span.twitter-tweets-tweet-bird-hover {
+  display: block !important;
+  position: absolute !important;
+  line-height: 24px !important;
+}
+
+a.twitter-tweets-tweet-bird strong {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+a.twitter-tweets-tweet-bird-none span.twitter-tweets-tweet-bird-normal {
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-none span.twitter-tweets-tweet-bird-hover {
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-none:hover span.twitter-tweets-tweet-bird-normal {
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-none:hover span.twitter-tweets-tweet-bird-hover {
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-twirl span.twitter-tweets-tweet-bird-normal,a.twitter-tweets-tweet-bird-twirl span.twitter-tweets-tweet-bird-hover {
+  -webkit-transition: all 0.6s cubic-bezier(1, -0.36, 0, 1.385);
+  -moz-transition: all 0.6s cubic-bezier(1, -0.36, 0, 1.385);
+  -ms-transition: all 0.6s cubic-bezier(1, -0.36, 0, 1.385);
+  -o-transition: all 0.6s cubic-bezier(1, -0.36, 0, 1.385);
+  transition: all 0.6s cubic-bezier(1, -0.36, 0, 1.385);
+  -webkit-transition-timing-function: cubic-bezier(1, -0.36, 0, 1.385);
+  -moz-transition-timing-function: cubic-bezier(1, -0.36, 0, 1.385);
+  -ms-transition-timing-function: cubic-bezier(1, -0.36, 0, 1.385);
+  -o-transition-timing-function: cubic-bezier(1, -0.36, 0, 1.385);
+  transition-timing-function: cubic-bezier(1, -0.36, 0, 1.385);
+}
+
+a.twitter-tweets-tweet-bird-twirl span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(1) rotate(0deg);
+  -moz-transform: scale(1) rotate(0deg);
+  -ms-transform: scale(1) rotate(0deg);
+  -o-transform: scale(1) rotate(0deg);
+  transform: scale(1) rotate(0deg);
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-twirl span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(0) rotate(0deg);
+  -moz-transform: scale(0) rotate(0deg);
+  -ms-transform: scale(0) rotate(0deg);
+  -o-transform: scale(0) rotate(0deg);
+  transform: scale(0) rotate(0deg);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-twirl:hover span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(0) rotate(360deg);
+  -moz-transform: scale(0) rotate(360deg);
+  -ms-transform: scale(0) rotate(360deg);
+  -o-transform: scale(0) rotate(360deg);
+  transform: scale(0) rotate(360deg);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-twirl:hover span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(1) rotate(360deg);
+  -moz-transform: scale(1) rotate(360deg);
+  -ms-transform: scale(1) rotate(360deg);
+  -o-transform: scale(1) rotate(360deg);
+  transform: scale(1) rotate(360deg);
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-fade span.twitter-tweets-tweet-bird-normal,a.twitter-tweets-tweet-bird-fade span.twitter-tweets-tweet-bird-hover {
+  -webkit-transition: 0.6s all;
+  -moz-transition: 0.6s all;
+  -ms-transition: 0.6s all;
+  -o-transition: 0.6s all;
+  transition: 0.6s all;
+}
+
+a.twitter-tweets-tweet-bird-fade span.twitter-tweets-tweet-bird-normal {
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-fade span.twitter-tweets-tweet-bird-hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-fade:hover span.twitter-tweets-tweet-bird-hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+a.twitter-tweets-tweet-bird-spin span.twitter-tweets-tweet-bird-normal,a.twitter-tweets-tweet-bird-spin span.twitter-tweets-tweet-bird-hover {
+  -webkit-transition: 0.6s all;
+  -moz-transition: 0.6s all;
+  -ms-transition: 0.6s all;
+  -o-transition: 0.6s all;
+  transition: 0.6s all;
+}
+
+a.twitter-tweets-tweet-bird-spin span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(1) rotate(0deg);
+  -moz-transform: scale(1) rotate(0deg);
+  -ms-transform: scale(1) rotate(0deg);
+  -o-transform: scale(1) rotate(0deg);
+  transform: scale(1) rotate(0deg);
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-spin span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(0) rotate(0deg);
+  -moz-transform: scale(0) rotate(0deg);
+  -ms-transform: scale(0) rotate(0deg);
+  -o-transform: scale(0) rotate(0deg);
+  transform: scale(0) rotate(0deg);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-spin:hover span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(0) rotate(360deg);
+  -moz-transform: scale(0) rotate(360deg);
+  -ms-transform: scale(0) rotate(360deg);
+  -o-transform: scale(0) rotate(360deg);
+  transform: scale(0) rotate(360deg);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-spin:hover span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(1) rotate(360deg);
+  -moz-transform: scale(1) rotate(360deg);
+  -ms-transform: scale(1) rotate(360deg);
+  -o-transform: scale(1) rotate(360deg);
+  transform: scale(1) rotate(360deg);
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-pop span.twitter-tweets-tweet-bird-normal,a.twitter-tweets-tweet-bird-pop span.twitter-tweets-tweet-bird-hover {
+  -webkit-transition: 0.6s all;
+  -moz-transition: 0.6s all;
+  -ms-transition: 0.6s all;
+  -o-transition: 0.6s all;
+  transition: 0.6s all;
+}
+
+a.twitter-tweets-tweet-bird-pop span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+  z-index: 2 !important;
+}
+
+a.twitter-tweets-tweet-bird-pop span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-pop:hover span.twitter-tweets-tweet-bird-normal {
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
+  z-index: 1 !important;
+}
+
+a.twitter-tweets-tweet-bird-pop:hover span.twitter-tweets-tweet-bird-hover {
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+  z-index: 2 !important;
+}
+
+.twitter-tweets-twitter {
+  font-size: 24px !important;
+  top: -5px !important;
+  left: 0 !important;
+}
+
+.twitter-tweets-bird {
+  font-size: 22px !important;
+  top: -5px !important;
+  left: 0 !important;
+}
+
+.twitter-tweets-bird-2 {
+  font-size: 32px !important;
+  top: -10px !important;
+  left: 0 !important;
+}
+
+.twitter-tweets-bird-3 {
+  font-size: 36px !important;
+  top: -10px !important;
+  left: 0 !important;
+}
+
+.twitter-tweets-grid {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 -10px !important;
+  text-align: left !important;
+  letter-spacing: -0.31em !important;
+  word-spacing: -0.43em !important;
+  text-rendering: optimizespeed !important;
+}
+
+.twitter-tweets-center {
+  text-align: center !important;
+}
+
+.twitter-tweets-cell {
+  width: 100% !important;
+  display: inline-block !important;
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  vertical-align: top !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-rendering: auto !important;
+}
+
+.twitter-tweets-unit-2 {
+  width: 50% !important;
+}
+
+.twitter-tweets-unit-3 {
+  width: 33.33333% !important;
+}
+
+.twitter-tweets-unit-4 {
+  width: 25% !important;
+}
+
+.twitter-tweets-unit-5 {
+  width: 20% !important;
+}
+
+.twitter-tweets-unit-6 {
+  width: 16.66667% !important;
+}
+
+.twitter-tweets-unit-7 {
+  width: 14.28571% !important;
+}
+
+.twitter-tweets-unit-8 {
+  width: 12.5% !important;
+}
+
+.twitter-tweets-unit-9 {
+  width: 11.11111% !important;
+}
+
+.twitter-tweets-unit-10 {
+  width: 10% !important;
+}
+
+// Specific Styling
+a.twitter-tweets-name {
+  font-size: 13px !important;
+}
+
+a.twitter-tweets-screen-name {
+  font-size: 12px !important;
+}
+
+a.twitter-tweets-name,a.twitter-tweets-screen-name {
+  color: #757575 !important;
+}
+
+a.twitter-tweets-name:visited,a.twitter-tweets-screen-name:visited {
+  color: #757575 !important;
+}
+
+a.twitter-tweets-name:hover,a.twitter-tweets-screen-name:hover {
+  color: #4099ff !important;
+}
+
+div.twitter-tweets-tweet-text {
+  color: #333333 !important;
+  font-size: 13px;
+  background-color: #ffffff !important;
+  border-color: #d6d6d6 !important;
+}
+
+div.twitter-tweets-tweet-text:before {
+  border-color: transparent #d6d6d6 transparent transparent !important;
+}
+
+div.twitter-tweets-tweet-text:after {
+  border-color: transparent #ffffff transparent transparent !important;
+}
+
+div.twitter-tweets-tweet-text a {
+  color: #757575 !important;
+}
+
+div.twitter-tweets-tweet-text a:visited {
+  color: #757575 !important;
+}
+
+div.twitter-tweets-tweet-text a:hover {
+  color: #4099ff !important;
+}
+
+div.twitter-tweets-tweet-text a.twitter-tweets-tweet-time {
+  font-size: 12px !important;
+  color: #757575 !important;
+}
+
+div.twitter-tweets-tweet-text a.twitter-tweets-tweet-time:visited {
+  color: #757575 !important;
+}
+
+div.twitter-tweets-tweet-text a.twitter-tweets-tweet-time:hover {
+  color: #4099FF !important;
+}
+
+div.twitter-tweets-actions a {
+  color: #757575 !important;
+}
+
+div.twitter-tweets-actions a:visited {
+  color: #757575 !important;
+}
+
+div.twitter-tweets-actions a:hover {
+  color: #4099ff !important;
+}
+
+span.twitter-tweets-tweet-bird-normal {
+  color: #4099ff !important;
+}
+
+span.twitter-tweets-tweet-bird-hover {
+  color: #105eb7 !important;
+}

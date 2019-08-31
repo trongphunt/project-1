@@ -1,0 +1,20 @@
+.modal-body, .modal-body input[type=text], .modal-body textarea{
+  font-size: 16px;
+}
+.modal-body p {
+  margin-bottom: 12px;
+}
+.modal-body .required {
+	color: red;
+}
+
+#sendmail_result.error p {
+	color: #FF4500;
+}
+#sendmail_result.succ p {
+	color: #468847;
+}
+
+.result .favorites-active .favorite_result {
+  background: url("../../img/icn-star_on.png") no-repeat 50% 50%;
+}

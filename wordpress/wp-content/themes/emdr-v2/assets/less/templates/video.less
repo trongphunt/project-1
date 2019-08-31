@@ -1,0 +1,87 @@
+.video-grid {
+  margin-bottom: 40px;
+}
+
+.col-video {
+  margin-top: @grid-gutter-width;
+
+  h1 {
+    margin: 0;
+  }
+  > div {
+    border: 1px solid darken(@tan-light, 3);
+  }
+
+  .entry-excerpt{
+    font-size: 13px;
+  }
+
+  .video-thumb {
+    max-height: 208px;
+    overflow: hidden;
+  }
+}
+
+.video-inner{
+  padding: 20px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.video-wrap {
+  display: block;
+  position: relative;
+  &:hover .play{
+    opacity: .75;
+  }
+  img {
+    z-index: 1;
+    position: relative;
+  }
+  .play {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    left: 50%;
+    margin-left: -16px;
+    z-index: 2;
+    opacity: .6;
+    .transition(opacity 120ms linear)
+  }
+}
+
+// #videoModal{
+//   .modal-body {
+//     padding: 0;
+//   }
+//   .flex-video {
+//     margin: 0;
+//   }
+//   .closeModal {
+//     position: absolute;
+//     top: -40px;
+//     right: 0;
+//     background: #329dbe;
+//     color: #fff;
+//     padding: 8px;
+//     width: 60px;
+//     text-align: center;
+//     font-size: 24px;
+//     line-height: 24px;
+//   }
+// }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-large-desktop) { 
+  .video-grid article {
+    .make-column(4);
+  }
+}
+
+@media screen and (min-width: @screen-desktop) {
+  #videoModal .modal-dialog {
+    padding-top: 60px;
+    width: 720px;
+    margin-left: -360px;
+  }  
+}

@@ -1,0 +1,149 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+@font-face{
+font-family:"GeorgiaPro";
+src:url("../../fonts/a47299aa-025b-4095-bd7f-7f1a107a2fcf.eot?#iefix");
+src:url("../../fonts/a47299aa-025b-4095-bd7f-7f1a107a2fcf.eot?#iefix") format("eot"),url("../../fonts/21c88e6f-2518-4756-ad30-da0b1380a6bd.woff") format("woff"),url("../../fonts/9bce2f2c-825c-43b6-b8fd-e5ade8dcb50b.ttf") format("truetype"),url("../../fonts/46a4b9e6-af52-4acd-bb7c-bcd22e0bb306.svg#46a4b9e6-af52-4acd-bb7c-bcd22e0bb306") format("svg");
+font-weight: bold;
+font-style: normal;
+}
+@font-face{
+font-family:"GeorgiaPro";
+src:url("../../fonts/619feb4a-b054-4264-8a7d-54f3334f316f.eot?#iefix");
+src:url("../../fonts/619feb4a-b054-4264-8a7d-54f3334f316f.eot?#iefix") format("eot"),url("../../fonts/71bc72b4-e8c3-413f-953d-8dea97140670.woff") format("woff"),url("../../fonts/f29b26d6-c03c-4e4e-8a7e-c8630fa6b742.ttf") format("truetype"),url("../../fonts/d135ad84-c8da-4a9e-aaa2-84db1b61005a.svg#d135ad84-c8da-4a9e-aaa2-84db1b61005a") format("svg");
+font-weight: bold;
+font-style: italic;
+}
+@font-face{
+font-family:"GeorgiaPro";
+src:url("../../fonts/7b67bf57-3988-4989-9328-ea5f41f1b55c.eot?#iefix");
+src:url("../../fonts/7b67bf57-3988-4989-9328-ea5f41f1b55c.eot?#iefix") format("eot"),url("../../fonts/103ac261-2bdc-47c8-b277-4ff41592c169.woff") format("woff"),url("../../fonts/50422483-14f4-4770-b5f4-1b72838a68b1.ttf") format("truetype"),url("../../fonts/67c342d6-fa04-46b8-bf2b-fa400759d7aa.svg#67c342d6-fa04-46b8-bf2b-fa400759d7aa") format("svg");
+font-weight: normal;
+font-style: italic;
+}
+@font-face{
+font-family:"GeorgiaPro";
+src:url("../../fonts/3b97520d-a722-45ce-b985-2fe0a48b5c1a.eot?#iefix");
+src:url("../../fonts/3b97520d-a722-45ce-b985-2fe0a48b5c1a.eot?#iefix") format("eot"),url("../../fonts/47123efd-376a-4ca4-a13a-7e6233cf1864.woff") format("woff"),url("../../fonts/53c391fa-d334-4b5b-b84e-c5d4f9cd597c.ttf") format("truetype"),url("../../fonts/f2757779-8128-4b78-a626-ca3af3af15a8.svg#f2757779-8128-4b78-a626-ca3af3af15a8") format("svg");
+font-weight: normal;
+font-style: normal;
+}
+
+
+// Reset the box-sizing
+// -------------------------
+
+* {
+  .box-sizing(border-box);
+}
+
+
+// Body reset
+// -------------------------
+
+html {
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-bg;
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+// Links
+// -------------------------
+
+a {
+  color: @link-color;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: @link-hover-color;
+  // text-decoration: underline;
+}
+a:focus {
+  .tab-focus();
+}
+
+
+// Images
+// -------------------------
+
+img {
+  vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  display: inline-block;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+// Rounded corners
+.img-rounded {
+  border-radius: @border-radius-large;
+}
+
+// Image thumbnails
+// See thumbnails.less for `.img-thumbnail`
+
+// Perfect circle
+.img-circle {
+  border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
+}
+
+
+// Horizontal rules
+// -------------------------
+
+hr {
+  margin-top:    @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+// Text Selection
+// -------------------------
+::selection {
+  background: @blue;
+  color: #fff;
+  }
+::-moz-selection {
+  background: @blue;
+  color: #fff;
+}

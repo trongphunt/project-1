@@ -1,0 +1,46 @@
+.faq-toggle a{
+  font-weight: 600;
+  // color: @tan;
+  margin-left: 10px;
+}
+
+.faq {
+  margin-bottom: 10px;
+  border-bottom: 1px solid @gray-lighter;
+
+  &:hover,
+  .set {
+    > a { color: darken(@blue, 25%) !important; }
+    .caret { border-top-color: darken(@blue, 25%); }
+    .set .caret { border-bottom-color: darken(@blue, 25%); }
+  }
+
+  .trigger {
+    margin: 0;
+    font-weight: 300;
+
+    a { display: block; padding: 10px 0 20px; }
+    a:hover { text-decoration: none; }
+
+  }
+
+  .caret {
+    margin-right: 10px;
+    border-top-color: @tan;
+    border-bottom-color: @tan;
+    border-top-width: 6px;
+  }
+
+  .set .caret {
+    border-top-width: 0;
+    border-bottom: 6px solid darken(@blue, 25%);
+  }
+
+  .content {
+    padding-left: 16px;
+    margin-left: 26px;
+    // margin-bottom: (@line-height-computed * 1.25);
+    border-left: 1px solid @gray-lighter;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,684 @@
+<?php 
+// Template Name: Profile
+$request_uri = $_SERVER['REQUEST_URI'];
+//$request_uri = str_replace('/therapists/', '', $request_uri);
+$query_vars = explode('/', $request_uri);
+$therapist_url = isset($query_vars[1])? trim($query_vars[1]): "";
+$result = array();
+$therapist = array();
+
+if($therapist_url != '') {
+	$result = call_api_getTherapist(urldecode($therapist_url));
+	
+	if(isset($result['data']) && !empty($result['data'])) {
+		$therapist = $result['data'];
+	}//echo '<pre>';print_r($therapist);exit;
+}
+
+// echo '<pre>' . var_export($therapist, true) . '</pre>'; die();
+
+?>
+
+<script type="text/javascript">
+	
+	//public urls;
+	var template_directory = "<?php bloginfo('template_directory'); ?>";
+	var admin_ajax_url = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
+
+</script>
+
+<?php 
+global $post;
+
+$page = get_page_by_title( 'Profile' );
+
+if ( !empty($page)) { 
+	$post = $page;
+	setup_postdata($post); 
+}
+
+get_header();
+?>
+
+    <section id="profile" class="container">
+      <div class="row">
+        
+        <?php if(empty($therapist)) { ?>
+	        <div class="alert text-center">
+	          It can't find therapist for URL, '<?php echo $therapist_url; ?>'<br /><?php echo $result['errorMsg']; ?>
+	        </div>
+		<?php } ?>
+        
+        <div class="col-12">
+          <?php get_template_part( 'templates/snippet', 'breadcrumbs' ); ?>
+          
+          <div class="section-divider">
+            <div class="section-icon"></div>
+          </div>
+            
+        </div>
+
+      </div>
+		
+      <?php if(!empty($therapist)) { ?>
+      
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				if(findFavorites('<?php echo $therapist['name']; ?>')) {
+					$(".btn-favorite").addClass("favorites-active");
+					$(".btn-favorite").html('<span class="icn-star favorite_result"></span> Favorite');
+				}
+			});
+		</script>
+      
+      <header class="row profile-header">
+      
+        <div class="col-lg-2">
+          
+          	<?php if($therapist['photo']=='') { ?>
+                <div class="profile-image" style="background-image: url(http://placehold.it/146x146);">
+            		<img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/assets/img/gfx-portal_2.png" alt="<?php echo $therapist['name']; ?>" />
+            <?php } else { ?>
+            	<div class="profile-image" style="background-image: url(<?php echo $therapist['photo']; ?>);">
+                	<img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/assets/img/gfx-portal.png" alt="<?php echo $therapist['name']; ?>" />
+            <?php } ?>
+          </div>
+        </div>
+<?//var_dump($therapist);?>
+        <div class="col-lg-7">
+          <h1 class="profile-name">
+            <?php if(isset($therapist['title'])){ 
+                echo $therapist['title']." ";
+             } 
+             echo $therapist['name']." ";  
+             if(isset($therapist['suffix'])){ 
+                echo $therapist['suffix']." ";
+             }?>
+			<?php if(isset($therapist['credentials'])){ ?>
+				<small><?php echo implode(", ", $therapist['credentials']); ?></small>
+			<?php }?>
+             <?php if(isset($therapist['verifiedAll']) && $therapist['verifiedAll']=='1') { ?>
+                <div class="verified">Verified</div>
+             <?php } ?>
+          </h1>
+          <div style="text-align: left; margin-top: -25px;">
+            <?php 
+                if(isset($therapist['profession'])){ 
+                echo $therapist['profession'][0] ["profession"];
+                } 
+            ?>
+          </div>
+
+         <div class="table sans">
+           <!-- <?php if(isset($therapist['verified']) && $therapist['verified']=='1') { ?>
+            	<div class="col-sm-2 cell verified-status"><div class="verified">Verified</div></div>
+            <?php } ?>  
+            <?php if(isset($therapist['occupation']) && $therapist['occupation']!='') { ?>
+            	<div class="col-sm-3 cell occupation"><small>Occupation:</small> <?php echo $therapist['occupation']; ?></div>
+            <?php } ?> -->
+            <?php if(isset($therapist['practiceLength']) && $therapist['practiceLength']!='') { ?>
+            	<div class="col-sm-2 cell practice"><small>In Practice For:</small> <?php echo date('Y') - intval($therapist['practiceLength']); ?> Years</div>
+            <?php } ?>
+            <?php if(isset($therapist['usingEMDR']) && $therapist['usingEMDR']!='') { ?>
+            	<div class="col-sm-2 cell using-emdr"><small>Using EMDR for:</small> <?php echo $therapist['usingEMDR']; ?> Years</div>
+            <?php } ?>
+            <?php if(isset($therapist['gender']) && $therapist['gender']!='') { ?>
+            	<div class="col-sm-2 cell occupation"><small>Gender:</small> <?php if($therapist['gender'] == "m") {echo "Male";}else{echo "Female";}  ?></div>
+            <?php } ?>
+            <div class="col-sm-3 cell cell-social">
+              <div class="social-btns btn-group">
+            <?php if(isset($therapist['socials']) && $therapist['socials']!='') { 
+                    foreach($therapist['socials'] as $socials){
+                        if($socials['accountName'] == 'twitter'){?>
+                            <a target="_blank" href="https://www.twitter.com/<?=$socials['accountID']?>" class="btn btn-default"><span class="icn-twitter text-hide">On Twitter</span></a>
+                        <?php }
+                        if($socials['accountName'] == 'facebook'){?>
+                            <a target="_blank" href="https://www.facebook.com/<?=$socials['accountID']?>" class="btn btn-default"><span class="icn-facebook text-hide">On Facebook</span></a>
+                        <?php }
+                    }
+                ?>
+            	
+            <?php } ?>
+              <!--  <a target="_blank"  class="btn btn-default"><span class="icn-google text-hide">On Google+</span></a> 
+                <a  class="btn btn-default"><span class="icn-blog text-hide">EMDR Blog</span></a> -->
+              </div>
+            </div>
+          </div>
+        </div><!-- .col-sm-7 -->
+
+        <div class="col-lg-2 col-offset-1 btn-group-contact">
+	        <?php if(isset($therapist['email']) && $therapist['email']!='' && isset($therapist['credentials'])) { 
+	          $therapist_title = $therapist['name']. ', '. implode(", ", $therapist['credentials']); 
+	        ?>
+	          <a href="javascript:void(0)" class="btn btn-primary btn-block btn-small email-link" onclick="javascript:sendEmailModal('<?php echo $therapist_url; ?>','<?php echo $therapist['name']; ?>','<?php echo $therapist_title; ?>');">Email Me</a>
+	        <?php } ?>
+	        <?php if(isset($therapist['website']) && $therapist['website']!='') { ?>
+	          <a href="<?php echo $therapist['website']; ?>" class="btn btn-primary btn-block btn-small website-link" target="_blank">Visit Website</a>
+	        <?php } ?>
+        	<a href="javascript:void(0)" class="btn btn-primary btn-block btn-small hidden-sm btn-favorite" data-toggle="button" onclick="javascript:toggleFavorite('<?php echo $therapist['name']; ?>', this, true);">Add Favorite</a>
+        </div>
+
+        <hr class="col-12"/>
+
+      </header><!-- .row -->
+
+      <div class="row">
+        <div class="profile-sidebar col-lg-3" role="complementary">
+          <div class="well">
+            <section>
+                
+               <div class="sidebar-name-soc">
+                <span class="specialist-name">
+                    <?php 
+                     echo $therapist['name']." ";  
+                     ?>
+                </span>
+                <div class="social-btns btn-group">
+            <?php if(isset($therapist['socials']) && $therapist['socials']!='') { 
+                    foreach($therapist['socials'] as $socials){
+                        if($socials['accountName'] == 'twitter'){?>
+                            <a target="_blank" href="<?=$socials['accountID']?>" class="btn btn-default"><span class="icn-twitter text-hide">On Twitter</span></a>
+                        <?php }
+                        if($socials['accountName'] == 'facebook'){?>
+                            <a target="_blank" href="<?=$socials['accountID']?>" class="btn btn-default"><span class="icn-facebook text-hide">On Facebook</span></a>
+                        <?php }
+                    }
+                ?>
+            	
+            <?php } ?>
+              </div>
+             
+             
+               </div> 
+               
+                
+              <h3 class="business-name"><?php echo $therapist['businessName']; ?></h3>
+              <div class="row">
+                <p class="col-6 col-lg-12 phone-fax">
+                	<?php if($therapist['primaryPhone'] != '') { ?>
+                  		<span class="small-title">Phone:</span> <a href="tel:<?php echo $therapist['primaryPhone']; if($therapist['primaryPhoneEx'] != 0){ echo ' x '.$therapist['primaryPhoneEx']; }?>"><?php echo $therapist['primaryPhone']; if($therapist['primaryPhoneEx'] != 0){ echo ' x '.$therapist['primaryPhoneEx']; }?></a><br />
+                  	<?php } ?>
+                  	<?php if($therapist['primaryFax'] != '') { ?>
+                  		<span class="small-title">Fax:</span> <a href="tel: <?php echo $therapist['primaryFax']; ?>"><?php echo $therapist['primaryFax']; ?></a>
+                  	<?php } ?>
+                </p>
+                <p class="col-6 col-lg-12 address">
+                	<?php
+                    //var_dump($therapist);
+                    /*echo "<hr />123";
+                    var_dump($therapist['primaryAddress2']);*/
+                    
+                    
+                		//$full_address = trim(implode(' ', $therapist['primaryAddress']));
+                        
+                        $full_address = $therapist['primaryAddress2'][0]['officeAddressLine1']." ".$therapist['primaryAddress2'][0]['city']." ".$therapist['primaryAddress2'][0]['stateOrProvince']." ".$therapist['primaryAddress2'][0]['zip'];
+                        
+                        
+                		if($full_address != '') { 
+					?>
+                		<span class="small-title">Address:</span>
+                        <?php if($therapist['weelChairAccessible'] == 1){ ?>
+					<img src="<?php bloginfo('template_directory'); ?>/assets/img/icn-wheelchair.png" alt="">
+				  <?php } ?>
+				  <?php if($therapist['twoBlocksFromPublicTransport'] == 1){ ?>
+					<img src="<?php bloginfo('template_directory'); ?>/assets/img/icn-bus.png" alt="">
+				  <?php } ?>
+                         <br>
+                		<?php 
+                        
+                        /*var_dump($therapist['primaryAddress2']);
+                        
+                        foreach($therapist['primaryAddress2'] as $address){
+                            
+                            if($address['businessName'] != '')
+                				echo "<b>".$address['businessName']."</b><br/>";
+                            
+                				echo $address['officeAddressLine1']."<br/>";
+                                if($address['officeAddressLine2']){
+                                    echo $address['officeAddressLine2']."<br/>";
+                                }
+                                if($address['city'] && $address['stateOrProvince'] && $address['zip']){
+                                    echo $address['city']." ".$address['stateOrProvince']." ".$address['zip']. "<br/>";
+                                }
+                                
+                		}*/
+                        
+                		/*	if($therapist['primaryAddress']['addressLine1'] != '')
+                				echo $therapist['primaryAddress']['addressLine1']. "<br/>";
+                			if($therapist['primaryAddress']['addressLine2'] != '')
+                				echo $therapist['primaryAddress']['addressLine2']. "<br/>";
+                			if($therapist['primaryAddress']['city'] != '')
+                				echo $therapist['primaryAddress']['city']. ", ";
+                			if($therapist['primaryAddress']['state'] != '' || $therapist['primaryAddress']['zipCode'] != '')
+                				echo $therapist['primaryAddress']['state']. " ". $therapist['primaryAddress']['zipCode'];*/
+                		?>
+                	<?php } 
+                    
+                    
+                    //var_dump($therapist['primaryAddress2']);
+                        
+                        foreach($therapist['primaryAddress2'] as $address){
+                            
+                            if($address['businessName'] != '')
+                				echo "<b>".$address['businessName']."</b><br/>";
+                            
+                				echo $address['officeAddressLine1']."<br/>";
+                                if($address['officeAddressLine2']){
+                                    echo $address['officeAddressLine2']."<br/>";
+                                }
+                                if($address['city'] && $address['stateOrProvince'] && $address['zip']){
+                                    echo $address['city']." ".$address['stateOrProvince']." ".$address['zip']. "<br/>";
+                                }
+                                
+                		}
+                    
+                    ?>
+                </p>
+              <!--  <p class="bldg-access col-6 col-lg-12">
+                  <span class="small-title">Accessibility:</span><br>
+				  <?php if($therapist['weelChairAccessible'] == 1){ ?>
+					<img src="<?php bloginfo('template_directory'); ?>/assets/img/icn-wheelchair.png" alt="">
+				  <?php } ?>
+				  <?php if($therapist['twoBlocksFromPublicTransport'] == 1){ ?>
+					<img src="<?php bloginfo('template_directory'); ?>/assets/img/icn-bus.png" alt="">
+				  <?php } ?>
+                </p> -->
+              </div>
+            </section>
+
+            <div class="visible-lg">
+            
+              <div class="flex-video map">
+              	<?php if($full_address != '') { ?>
+                	<iframe class="" width="200" height="115" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<?php echo urlencode($full_address); ?>&hnear=<?php echo urlencode($full_address); ?>&ie=UTF8&hq=&t=m&z=14&iwloc=A&output=embed"></iframe>
+              	<?php } ?>
+              </div>
+			
+            
+            <?php //$sb = new TribeEvents();
+            //$args['eventDate'] = date();
+                    // $sb->instance();
+                     //the_widget('TribeEventsMiniCalendarWidget');
+                     //var_dump($GLOBALS['wp_widget_factory']->widgets);
+                  ?> 
+            <?  if($therapist['name'] == "Carol Maker") {?> 
+              <section>
+                <h3 class="small-title">Blog Posts:</h3>
+                <ul class="list-unstyled post-list">
+                    <?php
+                        $args = array( 'posts_per_page' => 3, 'orderby' => 'rand', 'author' => 2 );
+                        $rand_posts = get_posts( $args );
+                        foreach ( $rand_posts as $post ) : 
+                          setup_postdata( $post ); ?>
+                        	<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><div class="entry-meta">Posted: <?php the_date('m/d/Y', '', ''); ?> 3/14/2015</div></li>
+                        <?php endforeach; 
+                        wp_reset_postdata();
+                    ?>
+                
+                
+               <!--   <li><a href="#">Mindfulness</a> <div class="entry-meta">Posted: 3/14/2015</div></li>
+                  <li><a href="#">State of the Art Wellness - A Look Into Your Mind</a> <div class="entry-meta">Posted: 3/14/2015</div></li>
+                  <li><a href="#">The 100th Monkey</a> <div class="entry-meta">Posted: 3/14/2015</div></li> -->
+                </ul>
+              </section>
+                 <? } ?>
+               <?  if($therapist['name'] == "Carol Maker") { ?> 
+              <section>
+                <h3 class="small-title">Upcoming Events:</h3>
+                <ul class="list-unstyled post-list">
+                     <?php
+                    
+                        $args = array( 'post_type' => 'tribe_events', 'posts_per_page' => 3, 'orderby' => 'rand', 'author' => 2);
+                        $rand_posts = get_posts( $args );
+                        foreach ( $rand_posts as $post ) : 
+                          setup_postdata( $post ); ?>
+                        	<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><div class="entry-meta">Posted: <?php the_date('m/d/Y', '', ''); ?> 3/14/2015</div></li>
+                        <?php endforeach; 
+                        wp_reset_postdata();
+                    ?>
+                  <!--<li><a href="#">Event Name</a> <div class="entry-meta">3/14/2015 3:30pm</div></li>
+                  <li><a href="#">Event Name That’s A Little Longer Than Most</a> <div class="entry-meta">3/14/2015 9:00am</div></li>
+                  <li><a href="#">Event Name</a> <div class="entry-meta">3/14/2015 - 3/17/2015</div></li>-->
+                </ul>
+              </section>
+              <? } ?>
+            </div><!-- .hidden-sm -->
+
+          </div>
+        </div>
+        <div id="main" class="col-lg-7" role="main">
+          <div class="profile-main-inner">
+            <h2 class="description-header"><?php echo $therapist['descriptionHeader']; ?></h2>
+            <p class="description-text"><?php echo nl2br($therapist['descriptionText']); ?></p>
+
+            <div class="offers">
+                <ul>
+                   <?if ( isset($therapist['initialPhoneConsultationFree']) && $therapist['initialPhoneConsultationFree']== true ) {?> <li>Free initial phone consultation</li><?}?>
+                   <?if ( isset($therapist['initialSessionFree']) && $therapist['initialSessionFree']== true ) {?> <li>Free initial session</li><?}?>
+                   <?if ( isset($therapist['lowFeesOffered']) && $therapist['lowFeesOffered']== true ) {?> <li>Low fees offered</li><?}?>
+                   <?if ( isset($therapist['initialPhoneConsultationFree']) || isset($therapist['initialSessionFree']) || isset($therapist['lowFeesOffered']) ) {?> <li>Ask for details</li><?}?>
+                </ul>
+            </div>
+
+          <!-- begin testimonial row -->
+
+            <div class="row">
+            <?php if(!empty($therapist['testimonials'])) { ?>
+                <ul class="profile-list testimonials col-12">
+                  <li class="small-title">Testimonials:</li>
+                  <?php foreach($therapist['testimonials'] as $row_item) { ?>
+                    <li class="row-item">“<?php echo $row_item; ?>"</li>
+                  <?php } ?>
+                </ul>
+            <?php } ?>
+          </div>
+          <!-- end testimonial row -->
+
+          <!-- begin treatment row -->
+            <div class="section-divider">
+              <div class="section-icon"></div>
+            </div>
+            <div class="row treatment-row situations">
+              <?php if(!empty($therapist['treatment'])) { ?>
+              	  <ul class="treatment-categories second-section-margin-top profile-list">
+  	            	<li class="small-title">Treatment For</li>
+  	              	<?php foreach($therapist['treatment'] as $row_item) { ?>
+  	                	<li class="row-item"><?php echo $row_item; ?></li>
+  	                <?php } ?>
+  	              </ul>
+              <?php } ?>
+
+              <?php if(!empty($therapist['situations'])) { ?>
+                  <ul class="religious situations second-section-margin-top profile-list col-4">
+                    <li class="small-title">Situations:</li>
+                    <?php foreach($therapist['situations'] as $row_item) { ?>
+                      <li class="row-item"><?php echo $row_item; ?></li>
+                    <?php } ?>
+                  </ul>
+                <?php } ?>
+
+                <?php if(!empty($therapist['traumaticEvent'])) { ?>
+                  <ul class="special-services second-section-margin-top profile-list col-4">
+                    <li class="small-title">Traumatic Events:</li>
+                    <?php foreach($therapist['traumaticEvent'] as $row_item) { ?>
+                      <li class="row-item"><?php echo $row_item; ?></li>
+                    <?php } ?>
+                  </ul>
+                <?php } ?>
+            </div>
+              <!-- end treatment row -->
+
+            <!-- begin coaching for row -->
+
+            <div class="section-divider">
+              <div class="section-icon"></div>
+            </div>
+        <div class="row profile-row">
+                
+                <?php if(!empty($therapist['peakPerformanceName'])) { ?>
+                <ul class="in-network profile-list col-6">
+                  <li class="small-title">Coaching For:</li>
+                  <?php foreach($therapist['peakPerformanceName'] as $row_item) { ?>
+                    <li class="row-item"><?php echo $row_item; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } ?>
+
+              <?php if(!empty($therapist['languages'])) { ?>
+                <ul class="languages profile-list col-4">
+                  <li class="small-title">Languages</li>
+                  <?php foreach($therapist['languages'] as $row_item) { ?>
+                    <li class="row-item"><?php echo $row_item; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } ?>
+
+          </div>
+
+          <!-- end coaching for row -->
+
+           <!-- begin other therapies row -->
+            <div class="section-divider">
+              <div class="section-icon"></div>
+            </div>
+              <div class="row profile-row special-services">
+                    <?php if(!empty($therapist['otherTherapyMethods'])) { ?>
+                      <ul class="in-network profile-list col-lg-4">
+                        <li class="small-title">Other Therapy Methods:</li>
+                        <?php foreach($therapist['otherTherapyMethods'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+                    <?php if(!empty($therapist['services'])) { ?>
+                      <ul class="services profile-list col-4">
+                        <li class="small-title">Services</li>
+                        <?php foreach($therapist['services'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+                    <?php if(!empty($therapist['specialPopulationFocus'])) { ?>
+                      <ul class="special-populations profile-list col-4">
+                        <li class="small-title">Special Population Focus:</li>
+                        <?php foreach($therapist['specialPopulationFocus'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+
+                    <?php if(!empty($therapist['agesServed'])) { ?>
+                      <ul class="ages profile-list col-4">
+                        <li class="small-title">Ages Served</li>
+                        <?php foreach($therapist['agesServed'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+
+                    <?php if(!empty($therapist['religiousSpiritual'])) { ?>
+                      <ul class="religious profile-list col-4">
+                        <li class="small-title">Religious / Spiritual:</li>
+                        <?php foreach($therapist['religiousSpiritual'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+
+                    <?php if(!empty($therapist['specialServices'])) { ?>
+                      <ul class="special-services profile-list col-4">
+                        <li class="small-title">Special Services:</li>
+                        <?php foreach($therapist['specialServices'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+
+                    <?php if(!empty($therapist['specialServices'])) { ?>
+                      <ul class="special-services profile-list col-4">
+                        <li class="small-title">Special Services:</li>
+                        <?php foreach($therapist['specialServices'] as $row_item) { ?>
+                          <li class="row-item"><?php echo $row_item; ?></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } ?>
+
+
+              </div>
+           <!-- end other therapies row -->
+
+          <!-- begin fees row -->
+
+          <div class="section-divider">
+                <div class="section-icon"></div>
+            </div>
+
+            <div class="row profile-row">
+              <?php if(!empty($therapist['fees'])) { ?>
+                <ul class="fees profile-list col-4">
+                  <li class="small-title">Fees:</li>
+                  <?php if(isset($therapist['fees'])) { ?>
+                    <li class="row-item"><?php echo $therapist['fees']; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } else{ ?>
+                    <ul class="fees profile-list col-4">
+                  <li class="small-title">Fees:</li>
+                  <li class="row-item">Call me to discuss</li>
+                </ul>
+                <?php }?>
+
+              <?php if(!empty($therapist['paymentsAccepted'])) { ?>
+                <ul class="payments profile-list col-4">
+                  <li class="small-title">Payments Accepted:</li>
+                  <?php foreach($therapist['paymentsAccepted'] as $row_item) { ?>
+                    <li class="row-item"><?php echo $row_item; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } ?>
+
+              <?php if(!empty($therapist['financialArrangements'])) { ?>
+                <ul class="financial-arrangements profile-list col-4">
+                  <li class="small-title">Financial Arrangements:</li>
+                  <?php foreach($therapist['financialArrangements'] as $row_item) { ?>
+                    <li class="row-item"><?php echo $row_item; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } ?>
+
+              <?php if(!empty($therapist['inNetwork'])) { ?>
+                <ul class="in-network profile-list col-6">
+                  <li class="small-title">In-Network For:</li>
+                  <?php foreach($therapist['inNetwork'] as $row_item) { ?>
+                    <li class="row-item"><?php echo $row_item; ?></li>
+                  <?php } ?>
+                </ul>
+              <?php } ?>
+	
+	            
+			   </div>	
+
+        <!-- end fees row -->
+            
+            <?php //echo do_shortcode('[frontier-post]'); 
+            
+            //get_plugins( 'hello-dolly' );
+            //do_action('testfunc');
+            ?>
+          
+          </div><!-- .profile-main-inner -->
+        </div><!-- #main -->
+
+        <div class="profile-sidebar col-12 col-lg-2 pull-right" role="complementary">
+        
+	        <?php if(!empty($therapist['EMDRTraining'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">EMDR Training:</h3>
+	            <p class="emdr-training">
+	            	<?php foreach($therapist['EMDRTraining'] as $row_item) { ?>
+	                	<?php echo $row_item; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+			
+			<?php if(!empty($therapist['nonEMDRTraining'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">Non-EMDR Training:</h3>
+	            <p class="emdr-training">
+	            	<?php foreach($therapist['nonEMDRTraining'] as $row_item) { ?>
+	                	<?php echo $row_item; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+	
+	      	<?php if(!empty($therapist['certifications'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">Certifications:</h3>
+	            <p>
+	            	<?php foreach($therapist['certifications'] as $row_item) { ?>
+	                	<?php echo $row_item['certName'].' ('.$row_item['yearReceived'].')'; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+			
+			<?php if(!empty($therapist['license'])) { ?>
+            <section class='sidebar-section'>
+	            <h3 class="small-title">License:</h3>
+	            <p>
+	            	<?php foreach($therapist['license'] as $row_item) { ?>
+	                	<?php echo $row_item; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+			
+	        <?php if(!empty($therapist['education'])) { ?>
+            <section class='sidebar-section'>
+	            <h3 class="small-title">Education:</h3>
+	            <p>
+	            	<?php foreach($therapist['education'] as $row_item) { ?>
+	                	<?php echo $row_item; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+	
+	        <?php if(!empty($therapist['licensingStatus'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">License Number and Governing Body:</h3>
+	            <p>
+	            	<?php 
+                    //echo "<pre>";
+                    //var_dump($therapist["name"]);
+                    foreach($therapist['licensingStatus'] as $row_item) { ?>
+	                	<?php 
+                        echo $row_item['license'].", ";
+                        
+                        echo $row_item['governingAuthority']." ";
+                        
+                        //if($row_item['supervisionCompleteYear'] != "1989"){
+                        //echo "(".$row_item['supervisionCompleteYear'].")";
+                        //}
+                        /*if(!empty($row_item['supervisionCompleteMonth'])) echo " (".$row_item['supervisionCompleteMonth']." ";
+                        if(!empty($row_item['supervisionCompleteYear'])) echo  $row_item['supervisionCompleteYear'].")";*/
+                        
+                        ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+	
+	        <?php if(!empty($therapist['professionalAffiliations'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">Professional Affiliations:</h3>
+	            <p>
+	            	<?php foreach($therapist['professionalAffiliations'] as $row_item) { ?>
+	                	<?php echo $row_item; ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+	
+	        <?php if(!empty($therapist['accomplishments'])) { ?>
+	          <section class='sidebar-section'>
+	            <h3 class="small-title">Accomplishments:</h3>
+	            <p>
+	            	<?php foreach($therapist['accomplishments'] as $row_item) { ?>
+	                	<?php echo $row_item['trainingName']." (".$row_item['yearCompleted'].")" ?><br/>
+	                <?php } ?>
+	            </p>
+	          </section>
+	        <?php } ?>
+	        
+        </div>
+
+      </div><!-- .row -->
+      
+      <?php } ?>
+
+    </section>
+
+<?php get_footer(); ?>
