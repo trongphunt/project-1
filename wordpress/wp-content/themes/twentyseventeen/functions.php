@@ -609,22 +609,22 @@ function twentyseventeen_unique_id( $prefix = '' ) {
 	return $prefix . (string) ++$id_counter;
 }
 
-add_action('wp_loaded','get_form_data');
+//add_action('wp_loaded','get_form_data');
 
-function get_form_data(){
-    if(!empty($_POST['save-data']))
-    {
-        global $wpdb;
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $address = $_POST['address'];
-        $city = $_POST['city'];
+//function get_form_data(){
+    //if(!empty($_POST['save-data']))
+    //{
+       // global $wpdb;
+      //  $firstname = $_POST['firstname'];
+       // $lastname = $_POST['lastname'];
+       // $address = $_POST['address'];
+      //  $city = $_POST['city'];
         // Cập nhật (nếu chưa có thì hệ thống tự thêm mới)
 //        update_option('mailer_gmail_username', $email);
 //        update_option('mailer_gmail_password', $pass);
-        $wpdb->insert('persons', array("firstname" => $firstname, "lastname" => $lastname, "address"=>$address, "city"=>$city));
-    }
-}
+       // $wpdb->insert('persons', array("firstname" => $firstname, "lastname" => $lastname, "address"=>$address, "city"=>$city));
+   // }
+//}
 
 /**
  * Implement the Custom Header feature.
