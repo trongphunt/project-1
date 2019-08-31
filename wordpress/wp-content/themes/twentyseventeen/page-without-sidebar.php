@@ -53,16 +53,18 @@ $person_list=$wpdb->get_results($wpdb->prepare("SELECT * FROM persons",ARRAY_A))
         </thead>
     <tbody>
     <?php
+    $i = 1;
     foreach ($person_list AS $key => $person){
        ?>
         <tr>
-            <td><?php echo $person->id;?></td>
+            <td><?php echo $i;?></td>
             <td><?php echo $person->firstname;?></td>
             <td><?php echo $person->lastname;?></td>
             <td><?php echo $person->address;?></td>
             <td><?php echo $person->city;?></td>
         </tr>
         <?php
+        $i++;
     }
     ?>
     </tbody>
