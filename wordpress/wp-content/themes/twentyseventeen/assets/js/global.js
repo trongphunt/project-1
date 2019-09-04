@@ -1,6 +1,22 @@
 /* global twentyseventeenScreenReaderText */
 (function( $ ) {
 
+	//Validate Sign form
+	$('[name="save-data"]').on('click',function (e) {
+        var sign_form = $("#sign-form");
+        var firstname = $('[name="firstname"]').val();
+        var lastname = $('[name="lastname"]').val();
+        var address = $('[name="address"]').val();
+        var city = $('[name="city"]').val();
+        if(firstname=='' && lastname=='' && address=='' && city==''){
+            alert("Please enter least 1 value");
+            e.preventDefault();
+        }else {
+            sign_form.submit();
+        }
+    });
+    //Validate Sign form
+
 	// Variables and DOM Caching.
 	var $body = $( 'body' ),
 		$customHeader = $body.find( '.custom-header' ),
