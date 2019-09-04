@@ -69,12 +69,6 @@ $person_list=$wpdb->get_results($wpdb->prepare("SELECT * FROM persons",ARRAY_A))
     ?>
     </tbody>
     </table>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            alert("aaaaa");
-        });
-    </script>
 </div>
 
 <?php get_footer();
